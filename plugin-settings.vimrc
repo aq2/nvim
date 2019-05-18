@@ -95,3 +95,4 @@
 
   let g:gitgutter_highlight_lines = 1
   " let g:gitgutter_signs = 0
+

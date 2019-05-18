@@ -7,7 +7,6 @@
 
 
   call plug#begin('~/.config/nvim/plugged')
-    " Plug 'chrisbra/changesPlugin'
     Plug 'airblade/vim-gitgutter'
     Plug 'bling/vim-bufferline'
     Plug 'digitaltoad/vim-pug'
@@ -20,7 +19,7 @@
     Plug 'joeytwiddle/sexy_scroller.vim'
     Plug 'junegunn/fzf.vim'
     Plug 'junegunn/goyo.vim'
-    Plug 'junegunn/limelight.vim'
+    " Plug 'junegunn/limelight.vim'
     Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --all' }
     Plug 'mattn/emmet-vim'
     " Plug 'mgee/lightline-bufferline'
