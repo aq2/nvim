@@ -50,10 +50,11 @@
 
 
 "  source other vim settings
-"  source /home/angelo/.vim/keys.vimrc
-"  source /home/angelo/.vim/nerd.vimrc
-"  source /home/angelo/.vim/lightline.vimrc
-"  source /home/angelo/.vim/functions.vimrc
-"  source /home/angelo/.vim/plugin-settings.vimrc
+source $HOME/.config/nvim/plug.vimrc
+source /home/angelo/.config/nvim/keys.vimrc
+  source /home/angelo/.config/nvim/nerd.vimrc
+"  source /home/angelo/.config/nvim/lightline.vimrc
+  source /home/angelo/.config/nvim/functions.vimrc
+  source /home/angelo/.config/nvim/plugin-settings.vimrc
 
 " 82
