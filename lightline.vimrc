@@ -1,3 +1,5 @@
+"  custom lightline settings
+
   source ~/.config/nvim/colors/gravyLine.vim
 
   let g:lightline = {
@@ -18,8 +20,7 @@
     \    'lineinfo': 'MyLineInfo',
     \  },
   \ }
-
-
+" ﯁﯀﮿﮾ﰬﰭﰵﰶﰷﱤﱥﱣﱦﱪﱫﲉﲎﲏﲤ
   let g:lightline#bufferline#modified  = ' 😱'
   let g:lightline#bufferline#read_only  = ' '
   let g:lightline#bufferline#filename_modifier = ':~:.'
@@ -27,6 +28,13 @@
   let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
   let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
 
+	function! MyMode()
+	  if winwidth(0) < 46
+	    setlocal statusline=\
+	    return
+	  endif
+	   return lightline#mode()
+	endfunction
 
   function! MyGit()
     return winwidth(0) > 70 ? gitbranch#name() : ''
@@ -40,27 +48,20 @@
     return  winwidth(0) > 70 ? line('.').':'. col('.') : ''
   endfunction
 
-	function! MyMode()
-	  if winwidth(0) < 46
-	    setlocal statusline=\ 
-	    return
-	  endif
-	   return lightline#mode()
-	endfunction
-
-  function! LightlineUpdateAQ()
+  function! MyLightlineUpdate()
     if g:goyo==0
+      set laststatus=2
       call lightline#update()
     endif
   endfunction
 
   augroup UpdateLightline
     autocmd!
-    au BufWritePost,TextChanged,TextChangedI * call LightlineUpdateAQ()
+    au BufWritePost,TextChanged,TextChangedI * call MyLightlineUpdate()
   augroup end
 
 
-" buffer mappings - do i need so many??
+" buffer mappings
   nmap <Leader>1 <Plug>lightline#bufferline#go(1)
   nmap <Leader>2 <Plug>lightline#bufferline#go(2)
   nmap <Leader>3 <Plug>lightline#bufferline#go(3)

@@ -23,7 +23,7 @@
 "... make folds a wee bit more interesting
   function! MyFoldText()
     let foldsize = (v:foldend-v:foldstart)
-    return "▾".getline(v:foldstart).'    ('.foldsize.' lines)▾'
+    return "▾".getline(v:foldstart).'    ('.foldsize.' lines) ▾'
   endfunction
 
   set foldtext=MyFoldText()
@@ -66,14 +66,14 @@
 
 " date stamp?
   " update 'Last modified: ' on last line when saved
-  " 'Last modified: ' can have up to 10 leading chars - handy for comment chars
-  " Restores cursor and window position using save_cursor variable
   function! LastModified()
     let n = line("$")
     let save_cursor = getpos(".")
+    " 'Last mod...' can have <10 leading chars - good for comments
     keepjumps exe '1,' . n . 's#^\(.\{,10}Last modified: \).*#\1' .
       \ strftime('%a %b %d, %Y  %H:%M') . '#e'
     call histdel('search', -1)
+    " restore cursor + window pos
     call setpos('.', save_cursor)
   endfunction
 

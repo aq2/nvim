@@ -4,7 +4,6 @@
   set cursorline
   set termguicolors
   colorscheme gravy
-  set background=dark
   " set ambiwidth=double
   set noruler signcolumn=no
   set number numberwidth=4 rnu
@@ -12,11 +11,9 @@
   set hidden
   set mouse=a
   " set backspace=2
-  set encoding=utf-8
   set undofile nobackup
   set virtualedit=block
   set splitbelow splitright
-  set wrap whichwrap+=<,>,[,]
   set clipboard^=unnamed,unnamedplus
   set timeout updatetime=100 ttimeoutlen=20
 
@@ -24,6 +21,7 @@
   set copyindent
   set showbreak=˜
   set fillchars=""
+  set wrap whichwrap+=<,>,[,]
   set shiftround shiftwidth=2
   set tabstop=2 softtabstop=2 expandtab
   set foldmethod=indent foldenable foldlevelstart=1

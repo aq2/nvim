@@ -37,6 +37,7 @@
   hi iCursor guibg=yellow ctermbg=yellow
   hi CursorLine guibg=#373632 guifg=NONE cterm=none
   autocmd InsertEnter * hi CursorLine guibg=#405000 cterm=none
+  autocmd CursorMovedI * hi CursorLine guibg=#405000 cterm=none
   autocmd InsertLeave * hi CursorLine guibg=#373632 cterm=none
 
 " basic text

@@ -26,28 +26,29 @@
 
   augroup Startify
     autocmd!
-     autocmd User StartifyReady setlocal cursorline
-    " autocmd FileType startify setlocal laststatus=0 noruler
+    autocmd User Startified setlocal laststatus=0
+    autocmd User StartifyReady setlocal cursorline
+    autocmd User StartifyBufferOpened set laststatus=2
     autocmd FileType startify map <buffer> <Leader>n :NERDTreeToggle<CR>
   augroup end
 
   let g:startify_lists = [
-      \ { 'type': 'files',     'header': ['   MRU']        },
-      \ { 'type': 'sessions',  'header': ['   Sessions']   },
-      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']  },
+    \ { 'type': 'files',     'header': ['   MRU']        },
+    \ { 'type': 'sessions',  'header': ['   Sessions']   },
+    \ { 'type': 'bookmarks', 'header': ['   Bookmarks']  },
   \ ]
 
 
 "... Goyo and limelight
-  let g:goyo=0
-  let g:goyo_width=110
-  let g:goyo_height=99
+  let g:goyo = 0
+  let g:goyo_width = 110
+  " let g:goyo_height = 100
   let g:limelight_paragraph_span = 1
 
   function! s:goyo_enter()
     let g:goyo = 1
-    set showtabline=0
     set signcolumn=no
+    set showtabline=0
   endfunction
 
   function! s:goyo_leave()
@@ -63,19 +64,15 @@
 
 ""... misc
 
-  let g:user_emmet_install_global = 0
   augroup Emmet
     autocmd!
     autocmd! FileType html,css EmmetInstall
   augroup end
+  let g:user_emmet_install_global = 0
 
 
   let g:SexyScroller_MaxTime = 100
   let g:SexyScroller_EasingStyle = 2
-
-  " let g:changes_fast = 0
-  " let g:changes_use_icons = 0
-  " let g:changes_respect_SignColumn = 1
 
   let markology_hlline_lower = 1
   let markology_hlline_upper = 1
@@ -89,8 +86,5 @@
       \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
   augroup end
 
-
   let g:gitgutter_highlight_lines = 1
-  " let g:gitgutter_signs = 0
-" let g:diminactive_use_syntax = 1
-" let g:diminactive_use_colorcolumn = 0
+

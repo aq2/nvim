@@ -8,9 +8,8 @@
 
   call plug#begin('~/.config/nvim/plugged')
     Plug 'airblade/vim-gitgutter'
-    " Plug 'bling/vim-bufferline'
-    " Plug 'blueyed/vim-diminactive'
-    Plug 'digitaltoad/vim-pug'
+    Plug 'csexton/trailertrash.vim'
+    " Plug 'digitaltoad/vim-pug'
     " Plug 'ervandew/supertab'
     " Plug 'hail2u/vim-css3-syntax'
     " Plug 'iloginow/vim-stylus'
@@ -22,14 +21,13 @@
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/limelight.vim'
     Plug 'junegunn/fzf', { 'dir': '~/.config/fzf', 'do': './install --all' }
-    Plug 'mattn/emmet-vim'
+    " Plug 'mattn/emmet-vim'
     Plug 'mgee/lightline-bufferline'
-    Plug 'csexton/trailertrash.vim'
     Plug 'mhinz/vim-startify'
     Plug 'pangloss/vim-javascript'
     Plug 'scrooloose/nerdtree'
     Plug 'simnalamburt/vim-mundo'
-    Plug 'storyn26383/vim-vue'
+    " Plug 'storyn26383/vim-vue'
     Plug 'tpope/vim-commentary'
     Plug 'vimwiki/vimwiki'
     Plug 'yurifury/hexHighlight'
