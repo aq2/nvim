@@ -1,17 +1,15 @@
 " --- vim keyboard mapping ---
 
-  map <Leader>ee :setlocal statusline=%#Normal#<CR>
-
 
 "   magic spells
-  map <silent> <F5> :setlocal spell! spelllang=en_gb<CR>
   " auto-accept first correction option
   nmap <silent> <Leader>z 1z=
+  map <silent> <F5> :setlocal spell! spelllang=en_gb<CR>
 
 " --- edit/reload dotfiles ---
   nmap <silent> <leader>ez :e ~/.zshrc<CR>
-  nmap <silent> <leader>ev :e ~/.vim/vimrc<CR>
-  nmap <silent> <leader>sv :so ~/.vim/vimrc<CR>
+  nmap <silent> <leader>ev :e $MYVIMRC<CR>
+  nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " --- navigation ---
   " scroll wrapped lines naturally
@@ -44,8 +42,6 @@
 
   cmap <silent> waq wqa<CR>
 
-  nnoremap <silent> <Leader>hl :nohl<CR>
-  " map h, to override changes plugin
   nnoremap <silent> <Leader>h :nohl<CR>
 
   " smarter paste on line above/below, rather than cursor position
@@ -59,7 +55,7 @@
   nnoremap <silent> <Leader>q :bd<CR>
   map <silent> <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-  " quick backup file - use saveas! to replace original buffer
+  " quick backup file
   map <silent> <Leader>b :up \| write!
     \ %:p:r-<C-R>=strftime("%d%b-%H:%M")<CR>-bak.<C-R>=expand("%:e")<CR><CR>
 
@@ -84,13 +80,12 @@
   nmap <silent> <Tab> <Plug>VimwikiNextLink
 
   map <silent> <Leader>g :Goyo<CR>
-  map <silent> <Leader>l :Limelight!!<CR>
-  map <silent> <Leader>u  :MundoToggle<CR>
   map <silent> <Leader>st :Startify<CR>
-  nmap <silent> <Leader>r <Plug>RefreshColorScheme
+  map <silent> <Leader>l :Limelight!!<CR>
+  map <silent> <Leader>u :MundoToggle<CR>
   map <silent> <Leader>n :NERDTreeFind<CR>
-  nmap <silent> <Leader><Space> :NERDTreeFind<CR>
-  " map <silent> <Leader>n :NERDTreeToggle<CR> | setlocal statusline=%#Normal#<CR>
+  " nmap <silent> <Leader><Space> :NERDTreeFind<CR>
+  nmap <silent> <Leader>r <Plug>RefreshColorScheme
 
 " →→ FZF
   " leader f for side/bottom pane

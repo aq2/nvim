@@ -1,29 +1,24 @@
-  source ~/.vim/colors/gravyLine.vim
+  source ~/.config/nvim/colors/gravyLine.vim
 
   let g:lightline = {
-      \ 'colorscheme': 'gravyLine',
-      \ 'active': {
-      \   'left': [['mode'], ['gitAQ'], ['buffers']] ,
-      \   'right': [['percent', 'lineinfo'], ['filetype']]
-      \ },
-      \ 'inactive': {
-      \  'right': []
-      \  },
-      \ 'subseparator': { 'left': '', 'right': '' },
-      \ 'component_function': {
-      \   'gitAQ': 'GitAQ',
-      \   'filetype': 'LightlineFiletype',
-      \   'percent': 'MyLightLinePercent',
-      \   'lineinfo': 'MyLightLineLineInfo',
-      \   'mode': 'LightlineMode',
-      \   'buffers': 'BuffersAQ'
-      \ },
+    \  'colorscheme': 'gravyLine',
+    \  'active': {
+    \    'left': [['mode'], ['buffers']] ,
+    \    'right': [['percent'], ['lineinfo'], ['gitBranch']]
+    \  },
+    \  'inactive': {
+    \    'right': [],
+    \  },
+    \  'separator': { 'left': '' , 'right': '' },
+    \  'subseparator': { 'left': '', 'right': '' },
+    \  'component_function': {
+    \    'mode': 'MyMode',
+    \    'gitBranch': 'MyGit',
+    \    'percent': 'MyPercent',
+    \    'lineinfo': 'MyLineInfo',
+    \  },
   \ }
 
-  " can we change left?
-  " rtfm and do the tutorial!
-  " when space gets short, abbreviate MODE and remove percentage/line info
-  " put git at end? show proper branch name, symbol when space is short?
 
   let g:lightline#bufferline#modified  = ' 😱'
   let g:lightline#bufferline#read_only  = ' '
@@ -32,33 +27,26 @@
   let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
   let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
 
-  " change so only takes place when not enough room?
-  let g:lightline.mode_map = {
-		    \ 'n' : 'NORM',
-		    \ 'i' : 'INS ',
-		    \ 'R' : 'REPL',
-		    \ 'v' : 'VIS ',
-		    \ 'V' : 'VLIN',
-		    \ "\<C-v>": 'VBLK',
-		    \ 'c' : 'COMM',
-		    \ 's' : 'SEL ',
-		    \ 'S' : 'SLIN',
-		    \ "\<C-s>": 'SBLK',
-		    \ 't': 'TERM',
-  \ }
 
+  function! MyGit()
+    return winwidth(0) > 70 ? gitbranch#name() : ''
+  endfunction!
 
-" fancy function!s
-  function! GitAQ()
-    if gitbranch#name() == ''
-      return ''
-    elseif gitbranch#name() == 'master'
-      return ''
-    else
-      return ''
-    endif
+  function! MyPercent()
+    return  winwidth(0) > 70 ? line('.') * 100 / line('$') . '%' : ''
   endfunction
 
+  function! MyLineInfo()
+    return  winwidth(0) > 70 ? line('.').':'. col('.') : ''
+  endfunction
+
+	function! MyMode()
+	  if winwidth(0) < 46
+	    setlocal statusline=\ 
+	    return
+	  endif
+	   return lightline#mode()
+	endfunction
 
   function! LightlineUpdateAQ()
     if g:goyo==0
@@ -70,41 +58,6 @@
     autocmd!
     au BufWritePost,TextChanged,TextChangedI * call LightlineUpdateAQ()
   augroup end
-
-function! LightlineFiletype()
-	  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
-	endfunction
-
-function! BuffersAQ()
-	  return winwidth(0) > 70 ? ('buffers') : ''
-	endfunction
-
-
-
-function! MyLightLinePercent()
-  if &ft !=? 'nerdtree'
-    return line('.') * 100 / line('$') . '%'
-  else
-    return ''
-  endif
-endfunction
-
-function! MyLightLineLineInfo()
-  if &ft !=? 'nerdtree'
-    return line('.').':'. col('.')
-  else
-    return ''
-  endif
-endfunction
-
-
-	function! LightlineMode()
-	  let fname = expand('%:t')
-	  return fname == '__Gundo__' ? 'Gundo' :
-	        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
-	        \ fname =~ 'NERD_tree' ? 'NERDTree' :
-	        \ winwidth(0) > 60 ? lightline#mode() : ''
-	endfunction
 
 
 " buffer mappings - do i need so many??

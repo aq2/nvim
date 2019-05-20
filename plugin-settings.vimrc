@@ -26,12 +26,9 @@
 
   augroup Startify
     autocmd!
-    autocmd User StartifyReady setlocal cursorline
-    autocmd User StartifyReady set laststatus=0 noruler
-    autocmd User StartifyReady map <silent> <buffer> <Leader><Space> :NERDTreeToggle<CR>
-
-    " autocmd User StartifyBufferOpened setlocal signcolumn=no
-    autocmd User StartifyBufferOpened set laststatus=2
+     autocmd User StartifyReady setlocal cursorline
+    " autocmd FileType startify setlocal laststatus=0 noruler
+    autocmd FileType startify map <buffer> <Leader>n :NERDTreeToggle<CR>
   augroup end
 
   let g:startify_lists = [
@@ -95,4 +92,5 @@
 
   let g:gitgutter_highlight_lines = 1
   " let g:gitgutter_signs = 0
-
+" let g:diminactive_use_syntax = 1
+" let g:diminactive_use_colorcolumn = 0

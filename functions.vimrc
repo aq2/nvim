@@ -2,6 +2,7 @@
   command! Bigger  let &guifont = substitute(&guifont, '\d\+', '\=submatch(0)+2', '')
   command! Smaller let &guifont = substitute(&guifont, '\d\+', '\=submatch(0)-2', '')
 
+
 "... zoom/restore window.
   function! s:ZoomToggle() abort
     if exists('t:zoomed') && t:zoomed
@@ -18,10 +19,11 @@
   command! ZoomToggle call s:ZoomToggle()
   nnoremap <silent> <C-A> :ZoomToggle<CR>
 
+
 "... make folds a wee bit more interesting
   function! MyFoldText()
     let foldsize = (v:foldend-v:foldstart)
-    return '▾  '.getline(v:foldstart).'     ∘      ('.foldsize.' lines)   '. repeat('   ∘   ', 29)
+    return "▾".getline(v:foldstart).'    ('.foldsize.' lines)▾'
   endfunction
 
   set foldtext=MyFoldText()
@@ -33,7 +35,8 @@
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   augroup end
 
-" --- change colorscheme ---
+
+" --- toggle colorscheme ---
   function! ToggleColours()
     if g:colors_name == 'gravy'
       colo bubblegum-256-light
@@ -43,6 +46,7 @@
   endfunction
 
   nnoremap <silent> <leader>cc :call ToggleColours()<CR>
+
 
 " syntaxy stuff
   map <F10> :echo "hi<"
@@ -59,9 +63,10 @@
 
   nmap <leader>sp :call <SID>SynStack()<CR>
 
+
 " date stamp?
   " update 'Last modified: ' on last line when saved
-  " 'Last modified: ' can have up to 10 chars before (handy for comment chars)
+  " 'Last modified: ' can have up to 10 leading chars - handy for comment chars
   " Restores cursor and window position using save_cursor variable
   function! LastModified()
     let n = line("$")

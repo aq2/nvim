@@ -18,6 +18,7 @@
   let s:orange="#c8764a"
   let s:pink="#f83070"
 
+  let s:darkest="#2b221c"
   let s:darker="#2d241e"
   let s:dark="#312721"
   let s:dgray='#5a493c'
@@ -27,7 +28,8 @@
 
   let s:greenish='#2d2d1e'
   " let s:greenish='#1d2d10'
-  let s:grayish='#392e27'
+  let s:grayish='#372c25'
+  " let s:grayish='#392e27'
 
 
 "   cursors
@@ -47,8 +49,8 @@
   exe 'hi Underlined gui=underline'
   exe 'hi Operator guifg='s:eggplant
   exe 'hi Statement guifg='s:purple' gui=bold'
-  exe 'hi Normal guifg='s:white' guibg='s:dark
-  exe 'hi NonText guifg='s:dgray' guibg='s:dark
+  exe 'hi Normal guifg='s:white' guibg='s:dark' ctermbg=none'
+  exe 'hi NonText guifg='s:dgray' guibg='s:dark' ctermbg=none'
 
 "  erm, not sure really
   exe 'hi Search guibg='s:orange
@@ -81,6 +83,7 @@
   exe 'hi Directory guifg='s:brown
   exe 'hi MatchParen guifg='s:darker' guibg='s:dgray
 
+  exe 'hi ColorColumn guibg='s:darkest
 
 " messages
   exe 'hi MoreMsg guifg='s:orange
