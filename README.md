@@ -1,3 +1,3 @@
 # nvim
 
-move along
+move along, nuttin don't last too long
